@@ -11,7 +11,6 @@ export class ShortUrlService {
    * @returns {Promise<string>} 短链接
    */
   static async generateShortUrl($axios, longUrl) {
-    // 构建请求数据
     const formData = new FormData();
     formData.append("longUrl", btoa(longUrl));
 
@@ -25,6 +24,23 @@ export class ShortUrlService {
       return response.data.ShortUrl;
     } else {
       throw new Error(response.data.Message || "短链接获取失败");
+    }
+  }
+
+  static async generateRawSubscriptionUrl($axios, content) {
+    const formData = new FormData();
+    formData.append("content", content);
+
+    const response = await $axios.post(CONSTANTS.RAW_SUBSCRIPTION_API, formData, {
+      headers: {
+        "Content-Type": "application/form-data; charset=utf-8"
+      }
+    });
+
+    if (response.data.Code === 1 && response.data.RawUrl !== "") {
+      return response.data.RawUrl;
+    } else {
+      throw new Error(response.data.Message || "订阅镜像生成失败");
     }
   }
 
