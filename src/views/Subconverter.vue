@@ -770,9 +770,10 @@ export default {
       this.$notify({
         title: "隐私提示",
         type: "warning",
+        customClass: "privacy-notice",
         message: h(
-          "i",
-          { style: "color: teal" },
+          "p",
+          { class: "privacy-notice-message" },
           "各种订阅链接（短链接服务除外）生成纯前端实现，无隐私问题。默认提供后端转换服务，隐私担忧者请自行搭建后端服务。"
         )
       });
@@ -1456,5 +1457,77 @@ body::-webkit-scrollbar-thumb,
 .trust-source-dialog .el-button--primary {
   border-color: #a84f34;
   background: #a84f34;
+}
+
+.privacy-notice {
+  width: min(440px, calc(100vw - 28px));
+  padding: 20px 22px 20px 20px;
+  border: 1px solid #f0eee6;
+  border-radius: 18px;
+  background: #faf9f5;
+  box-shadow: 0 18px 48px rgba(20, 20, 19, 0.14), inset 0 0 0 1px rgba(139, 136, 125, 0.18);
+}
+
+.privacy-notice .el-notification__icon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 13px;
+  background: #a84f34;
+  color: #faf9f5;
+  font-size: 22px;
+}
+
+.privacy-notice .el-notification__group {
+  min-width: 0;
+  margin-left: 14px;
+  margin-right: 18px;
+}
+
+.privacy-notice .el-notification__title {
+  color: #141413;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.privacy-notice .el-notification__content {
+  margin-top: 10px;
+}
+
+.privacy-notice-message {
+  margin: 0;
+  color: #4d4c48;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 1.65;
+}
+
+.privacy-notice .el-notification__closeBtn {
+  top: 18px;
+  right: 18px;
+  color: #6f6c63;
+  font-size: 18px;
+}
+
+.privacy-notice .el-notification__closeBtn:hover {
+  color: #141413;
+}
+
+@media (max-width: 640px) {
+  .privacy-notice {
+    right: 14px !important;
+    padding: 18px;
+  }
+
+  .privacy-notice .el-notification__title {
+    font-size: 21px;
+  }
+
+  .privacy-notice-message {
+    font-size: 15px;
+  }
 }
 </style>
