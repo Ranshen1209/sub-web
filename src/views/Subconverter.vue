@@ -1470,13 +1470,29 @@ body::-webkit-scrollbar-thumb,
 
 .privacy-notice .el-notification__icon {
   display: grid;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   place-items: center;
-  border-radius: 13px;
+  flex: 0 0 42px;
+  border-radius: 14px;
   background: #a84f34;
+  color: transparent;
+  font-size: 0;
+  line-height: 1;
+  box-shadow: inset 0 0 0 1px rgba(250, 249, 245, 0.2);
+}
+
+.privacy-notice .el-notification__icon::before {
+  content: "!";
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
   color: #faf9f5;
-  font-size: 22px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .privacy-notice .el-notification__group {
